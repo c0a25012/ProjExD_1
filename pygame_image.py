@@ -22,18 +22,23 @@ def main():
             if event.type == pg.QUIT: return
 
         key_lst = pg.key.get_pressed()
-        
+
+        x_axis, y_axis = -1, 0
+
         if not key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(-1, 0)
+            x_axis = -1
 
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip(1, 0)
+            x_axis = 1
 
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip(0, -1)
+            y_axis = -1
 
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip(0, 1)
+            y_axis = 1
+
+        kk_rct.move_ip(x_axis, y_axis)
+
 
         x = tmr % 3200
         screen.blit(bg_img, [-x, 0])
